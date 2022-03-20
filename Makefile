@@ -19,8 +19,10 @@ C_FILES = 	push_swap.c \
 			./operations/operations.c \
 			./stack/index_stack.c \
 			./stack/stack.c \
+			./stack/parsing.c \
 			./utils/ft_printf.c \
 			./utils/ft_atoi.c \
+			./utils/ft_split.c 
 
 B_FILES = 	./operations/push_rotate.c \
 			./operations/rrotate.c \
@@ -28,8 +30,10 @@ B_FILES = 	./operations/push_rotate.c \
 			./operations/operations.c \
 			./utils/ft_printf.c \
 			./utils/ft_atoi.c \
+			./utils/ft_split.c \
 			./stack/index_stack.c \
 			./stack/stack.c \
+			./stack/parsing.c \
 			./checker_files/checker.c \
 			./checker_files/get_next_line.c \
 			./checker_files/get_next_line_utils.c \

@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:29:47 by cjad              #+#    #+#             */
-/*   Updated: 2022/03/07 18:44:25 by cjad             ###   ########.fr       */
+/*   Updated: 2022/03/17 15:04:11 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ typedef struct s_complex
 
 void	ft_printf(const char *s, ...);
 int		ft_atoi(char	*str);
-void	check_av(char **av);
+char	**ft_split(char const	*s, char c);
+void	check_av(t_stack *a);
 void	addfront(t_stack *s, int data);
 void	stack_init(t_stack *s);
+void	parsing(char *s, t_stack *a);
+int		list_len(t_stack *a);
 void	print_stack(t_stack *s);
 void	swap(t_stack *t_stack);
 void	pushtop(t_stack	*t_stack_1, t_stack	*t_stack_2);
@@ -72,5 +75,6 @@ char	*ft_substr(char	*s, unsigned int start, size_t len);
 char	*ft_strdup(const char	*s1);
 int		ft_strcmp(char	*str1, char	*str2);
 void	apply_operation(char	*str, t_stack *a, t_stack *b);
+int		is_sorted(t_stack *a);
 
 #endif

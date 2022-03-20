@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:29:43 by cjad              #+#    #+#             */
-/*   Updated: 2022/03/07 18:45:10 by cjad             ###   ########.fr       */
+/*   Updated: 2022/03/17 15:03:20 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,16 @@ int	main(int ac, char	**av)
 	int		s;
 
 	i = ac - 1;
-	s = ac - 1;
-	if (ac)
+	stack_init(&a);
+	stack_init(&b);
+	while (i > 0)
 	{
-		check_av(av);
-		stack_init(&a);
-		stack_init(&b);
-		while (i > 0)
-		{
-			addfront(&a, ft_atoi(av[i]));
-			i--;
-		}
-		index_stack(&a, s);
-		sort(s, &a, &b);
+		parsing(av[i], &a);
+		i--;
 	}
+	check_av(&a);
+	s = list_len(&a);
+	index_stack(&a, s);
+	if (is_sorted(&a))
+		sort(s, &a, &b);
 }

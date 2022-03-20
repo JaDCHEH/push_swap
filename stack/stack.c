@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:29:18 by cjad              #+#    #+#             */
-/*   Updated: 2022/03/07 18:45:14 by cjad             ###   ########.fr       */
+/*   Updated: 2022/03/17 15:06:20 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,44 @@ void	print_stack(t_stack *s)
 	}
 }
 
-void	check_av(char **av)
+void	check_av(t_stack *a)
 {
-	int	i;
-	int	j;
+	t_strct	*tmp1;
+	t_strct	*tmp2;
 
-	i = 1;
-	while (av[i])
+	tmp1 = a->top;
+	while (tmp1)
 	{
-		j = i + 1;
-		while (av[j])
+		tmp2 = tmp1->next;
+		while (tmp2)
 		{
-			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+			if (tmp1->data == tmp2->data)
 			{
 				ft_printf("Error\n");
 				exit(1);
 			}
-			j++;
+			tmp2 = tmp2->next;
 		}
-		i++;
+		tmp1 = tmp1->next;
 	}
+}
+
+int	is_sorted(t_stack *a)
+{
+	t_strct	*tmp1;
+	t_strct	*tmp2;
+
+	tmp1 = a->top;
+	while (tmp1)
+	{
+		tmp2 = tmp1->next;
+		while (tmp2)
+		{
+			if (tmp1->data > tmp2->data)
+				return (1);
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (0);
 }

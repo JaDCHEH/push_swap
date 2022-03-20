@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 13:22:40 by cjad              #+#    #+#             */
+/*   Updated: 2022/03/17 15:24:59 by cjad             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	ft_strcmp(char	*str1, char	*str2)
@@ -44,26 +56,6 @@ void	operations(t_stack *a, t_stack *b)
 	free(str);
 }
 
-int	is_sorted(t_stack *a)
-{
-	t_strct	*tmp1;
-	t_strct	*tmp2;
-
-	tmp1 = a->top;
-	while (tmp1)
-	{
-		tmp2 = tmp1->next;
-		while (tmp2)
-		{
-			if (tmp1->data > tmp2->data)
-				return (1);
-			tmp2 = tmp2->next;
-		}
-		tmp1 = tmp1->next;
-	}
-	return (0);
-}
-
 int	main(int ac, char	**av)
 {
 	t_stack	a;
@@ -71,14 +63,14 @@ int	main(int ac, char	**av)
 	int		i;
 
 	i = ac - 1;
-	check_av(av);
 	stack_init(&a);
 	stack_init(&b);
 	while (i > 0)
 	{
-		addfront(&a, ft_atoi(av[i]));
+		parsing(av[i], &a);
 		i--;
 	}
+	check_av(&a);
 	operations(&a, &b);
 	if (is_sorted(&a))
 		ft_printf("KO\n");
